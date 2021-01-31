@@ -1,0 +1,23 @@
+.home {
+  display: flex;
+  /* justify-content: center; */
+  justify-content: space-between;
+  /* padding: 20px; */
+}
+
+.home h1 {
+  display: flex;
+  margin-left: auto;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.search input {
+  align-self: center;
+  height: 35px;
+  border: 1px solid #d7d7d7;
+}

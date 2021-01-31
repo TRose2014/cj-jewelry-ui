@@ -1,0 +1,16 @@
+nav {
+  align-items: center;
+  background-color: lavenderblush;;
+  display: flex;
+  justify-content: space-around;
+  height: 45px;
+}
+
+li {
+  display: flex;
+}
+
+li:hover {
+  background-color: pink;
+  padding: 20px;
+}
