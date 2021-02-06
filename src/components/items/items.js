@@ -34,6 +34,7 @@ function Items() {
             <h1>{item.name}</h1>
             <h1>{item.description}</h1>
             <h1>{item.price}</h1>
+            <img src={`https://cj-jewelry.s3-us-west-2.amazonaws.com/${item.name.split(' ').join('+')}`} alt={`${item.name}`} />
           </div>
         ))}
         </div>
