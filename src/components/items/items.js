@@ -1,23 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
-import axios from 'axios';
+import { ItemContext } from '../../context/itemsContext';
 
 function Items() {
-  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const context = useContext(ItemContext);
 
   useEffect(() => {
-    async function getItems() {
-      const url = 'http://localhost:3200/api/v1/items';
-      try {
-        const response = await axios.get(url);
-        console.log('response', response.data.results);
-        setItems(response.data.results);
-        setLoading(false);
-      } catch (e) {
-        console.log(`There was an error ${e}`);
-      }
-    }
-    getItems();
+    context.getItems();
+    setLoading(false);
   }, []);
 
 
@@ -29,7 +19,7 @@ function Items() {
         </div>
       ) : (
         <div>
-        {items.map((item) => (
+        {context.items.map((item) => (
           <div key={item.id}>
             <h1>{item.name}</h1>
             <h1>{item.description}</h1>
