@@ -6,6 +6,7 @@ import { ItemContext } from '../../context/itemsContext';
 
 function Items() {
   const [loading, setLoading] = useState(true);
+  // const [defaultImage, setdefaultImage] = `${process.env.REACT_APP_S3_URL}/Default`;
   const context = useContext(ItemContext);
 
   useEffect(() => {
@@ -13,6 +14,15 @@ function Items() {
     setLoading(false);
   }, []);
 
+  const handleImageError = e => { 
+    e.target.src = `${process.env.REACT_APP_S3_URL}/Default`;
+    e.target.alt = 'Default Image';
+  }
+
+  const styles = {
+    display: 'flex',
+    margin: '7%'
+  };
 
   return (
     <div>
@@ -21,29 +31,17 @@ function Items() {
           <h1>Nothing to display</h1>
         </div>
       ) : (
-        // <div>
-        // {context.items.map((item) => (
-        //   <div key={item.id}>
-        //     <h1>{item.name}</h1>
-        //     <h1>{item.description}</h1>
-        //     <h1>{item.price}</h1>
-        //     <img src={`${process.env.REACT_APP_S3_URL}/${item.name.split(' ').join('+')}`} alt={`${item.name}`} />
-        //   </div>
-        // ))}
-        // </div>
 
-        <div>
-        <GridList cols={2.5}>
+        <div style={styles}>
+        <GridList cellHeight={160} cols={3}>
           {context.items.map((item) => (
-            <GridListTile key={item.name}>
-              <img src={`${process.env.REACT_APP_S3_URL}/${item.name.split(' ').join('+')}`} alt={`${item.name}`} />
-              <GridListTileBar
-                title={item.name}
-              />
+            <GridListTile key={item.name} cols={1}>
+              <img onError={handleImageError} src={`${process.env.REACT_APP_S3_URL}/${item.name.split(' ').join('+')}`} alt={`${item.name}`} />
             </GridListTile>
           ))}
         </GridList>
       </div>
+
       )}
     </div>
   );
