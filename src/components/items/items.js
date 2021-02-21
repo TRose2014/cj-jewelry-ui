@@ -3,6 +3,7 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import { ItemContext } from '../../context/itemsContext';
+import './items.css'
 
 function Items() {
   const [loading, setLoading] = useState(true);
@@ -33,10 +34,15 @@ function Items() {
       ) : (
 
         <div style={styles}>
-        <GridList cellHeight={160} cols={3}>
+        <GridList cellHeight={160} cols={3} spacing={10}>
           {context.items.map((item) => (
             <GridListTile key={item.name} cols={1}>
               <img onError={handleImageError} src={`${process.env.REACT_APP_S3_URL}/${item.name.split(' ').join('+')}`} alt={`${item.name}`} />
+
+            <GridListTileBar
+              title={item.name}
+              subtitle={<span>price: {item.price}</span>}
+            />
             </GridListTile>
           ))}
         </GridList>

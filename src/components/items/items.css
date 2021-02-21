@@ -1,0 +1,14 @@
+.MuiGridListTile-tile {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50% !important;
+    height: 100%;
+}
+
+.MuiGridListTile-imgFullWidth {
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 30% !important; */
+}
