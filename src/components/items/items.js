@@ -13,7 +13,7 @@ function Items() {
   useEffect(() => {
     context.getItems();
     setLoading(false);
-  }, []);
+  });
 
   const handleImageError = e => { 
     e.target.src = `${process.env.REACT_APP_S3_URL}/Default`;
